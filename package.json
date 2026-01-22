@@ -1,0 +1,75 @@
+{
+  "name": "storybook-live-preview",
+  "displayName": "Storybook Live Preview",
+  "description": "Shows a live preview of React components with Storybook stories",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "storybookPreview.toggle",
+        "title": "Toggle Storybook Preview",
+        "icon": "$(browser)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "storybookPreview.toggle",
+          "when": "(resourceExtname == .tsx || resourceExtname == .ts || resourceExtname == .jsx || resourceExtname == .js) && storybookPreview.hasStory == true",
+          "group": "navigation@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Storybook Live Preview",
+      "properties": {
+        "storybookPreview.storybookUrl": {
+          "type": "string",
+          "default": "http://localhost:6006",
+          "description": "URL where Storybook is running"
+        },
+        "storybookPreview.autoShow": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically show preview when a component with a story is opened"
+        },
+        "storybookPreview.buildCommand": {
+          "type": "string",
+          "default": "yarn build-storybook",
+          "description": "Command to build Storybook before running"
+        },
+        "storybookPreview.runCommand": {
+          "type": "string",
+          "default": "yarn storybook",
+          "description": "Command to run Storybook server"
+        },
+        "storybookPreview.autoStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically build and start Storybook if it's not running"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0"
+  }
+}
+
