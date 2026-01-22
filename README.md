@@ -5,11 +5,6 @@ A Cursor/VS Code extension that shows a live preview of React components when th
 ## Features
 
 - 🎨 **Automatic Detection**: Automatically detects when you open a React component file that has a Storybook story
-- 📍 **Flexible Positioning**: Choose where to display the preview:
-  - Editor Bottom (split editor)
-  - Editor Right (side panel)
-  - Chat Bottom (floating panel that can be positioned near chat)
-  - Floating (separate window)
 - 🔄 **Live Updates**: Preview updates automatically when story files change
 - 🚀 **Quick Access**: Toggle preview on/off with a command
 - 🎯 **Smart Story Detection**: Automatically extracts story IDs from Storybook story files
@@ -35,15 +30,16 @@ A Cursor/VS Code extension that shows a live preview of React components when th
    vsce package
    code --install-extension storybook-live-preview-0.1.0.vsix
    ```
+   Press `Ctrl+Shift+P` and find `Install from VSIX` option in the IDE to install the extension.
 
 ## Configuration
 
 Open Settings and search for "Storybook Preview" to configure:
 
 - **Storybook URL**: The URL where Storybook is running (default: `http://localhost:6006`)
-- **Position**: Where to display the preview panel
+- **Storybook Build & Run command**: Commands to run and build storybook locally
+- **Auto Start**: Automatically build and start Storybook if its not running
 - **Auto Show**: Automatically show preview when opening components with stories
-- **Height**: Height of the preview panel in pixels
 
 ## Usage
 
@@ -60,14 +56,12 @@ Open Settings and search for "Storybook Preview" to configure:
 
 4. **Toggle Preview**: Use the command palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) and search for "Toggle Storybook Preview"
 
-5. **Change Position**: Use "Set Preview Position" command to change where the preview appears
-
 ## How It Works
 
 The extension:
 1. Monitors the active editor for React component files
 2. Looks for corresponding `.stories.tsx` or `.stories.ts` files in the same directory
-3. Extracts the Storybook story ID from the story file's `title` field
+3. Extracts the Storybook story ID from the story file's `title` field or filename pattern.
 4. Embeds Storybook's iframe in a webview panel
 5. Updates the preview when story files change
 
@@ -114,8 +108,5 @@ To contribute or modify this extension:
 1. Make changes to `src/extension.ts`
 2. Compile: `npm run compile`
 3. Reload the extension window (press `Ctrl+R` or `Cmd+R` in the extension development host)
-
-## License
-
-MIT
+4. Or package the changes and raise a PR to this repo.
 
