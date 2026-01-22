@@ -7,6 +7,8 @@
     "type": "git",
     "url": "git@github.com:ashindemm/vscode-storybook-preview.git"
   },
+  "icon": "images/slp.png",
+  "publisher": "ashinde",
   "engines": {
     "vscode": "^1.80.0"
   },
