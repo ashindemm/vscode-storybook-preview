@@ -457,7 +457,8 @@ function extractStoryId(storyContent: string, storyPath: string, workspaceRoot: 
         
         // Look for title in meta section, but exclude any that's inside args: { ... }
         // First, try to find title that's clearly in a meta object (has Meta type annotation nearby)
-        const metaWithTitleMatch = metaSection.match(/(?:const|let|var)\s+\w+\s*:\s*Meta[^=]*=\s*\{[^}]*title:\s*["']([^"']+)["']/s);
+        // Use a more flexible regex that handles multi-line objects
+        const metaWithTitleMatch = metaSection.match(/(?:const|let|var)\s+\w+\s*:\s*Meta[^=]*=\s*\{[\s\S]*?title:\s*["']([^"']+)["']/);
         if (metaWithTitleMatch) {
             titleMatch = metaWithTitleMatch;
         } else {

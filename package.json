@@ -3,6 +3,10 @@
   "displayName": "Storybook Live Preview",
   "description": "Shows a live preview of React components with Storybook stories",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ashindemm/vscode-storybook-preview.git"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
